@@ -114,18 +114,19 @@ Educational portfolio demo. Stooq ToS / fair use apply — keep intervals polite
 
 ---
 
-## Network note (box / datacenter egress)
+## Offline / mock mode (optional)
 
-Default happy path uses live Stooq HTTPS. Some cloud/sandbox egress IPs
-cannot complete TLS to `stooq.com` (handshake EOF / bot checks). In that case:
+The default path hits live Stooq over HTTPS. If Stooq is blocked on your network
+(TLS errors or empty responses), you can still demo the same HTTP client against
+a local Stooq-shaped mock:
 
 ```bash
-# Terminal A — Stooq-shaped local CSV server (uses data/mock_stooq/)
+# Terminal A — local CSV server (uses data/mock_stooq/)
 python scripts/local_stooq_server.py --port 8765
 
-# Terminal B — point the client at the mock (real requests.get still runs)
-export STOOQ_URL_TEMPLATE='http://127.0.0.1:8765/q/d/l/?s={symbol}&i=d'
+# Terminal B — Windows PowerShell
+$env:STOOQ_URL_TEMPLATE='http://127.0.0.1:8765/q/d/l/?s={symbol}&i=d'
 python -m src.cli fetch
 ```
 
-On a normal laptop/network, omit `STOOQ_URL_TEMPLATE` and hit Stooq directly.
+On a normal home/uni network, leave `STOOQ_URL_TEMPLATE` unset and call Stooq directly.
