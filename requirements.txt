@@ -1,0 +1,5 @@
+# live-market-collector — pinned for Python 3.11+
+requests==2.32.3
+pandas==2.2.3
+APScheduler==3.10.4
+python-dotenv==1.0.1

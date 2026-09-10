@@ -1,0 +1,42 @@
+# Virtual env
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets (none required, but keep habit)
+.env
+
+# SQLite DB can grow large — ignore it; keep schema via code + sample CSV
+data/market.db
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# Generated exports & dashboards (keep sample CSV tracked)
+data/exports/*.csv
+!data/exports/sample_aapl.csv
+output/*
+!output/.gitkeep
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
